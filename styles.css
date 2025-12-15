@@ -1,0 +1,213 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, #ecfeff, #dbeafe, #f3e8ff);
+}
+
+.brand {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #1f2937;
+    letter-spacing: -0.5px;
+    z-index: 10;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 32px;
+}
+
+.content {
+    width: 100%;
+    max-width: 672px;
+}
+
+.upload-area {
+    border: 4px dashed #d1d5db;
+    border-radius: 24px;
+    padding: 64px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+}
+
+.upload-area.drag-active {
+    border-color: #3b82f6;
+    background: #eff6ff;
+}
+
+.upload-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 24px;
+    color: #3b82f6;
+}
+
+.upload-area h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 16px;
+}
+
+.upload-area p {
+    font-size: 18px;
+    color: #6b7280;
+    margin-bottom: 32px;
+}
+
+.meme-container {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    padding: 32px;
+}
+
+.image-wrapper {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    margin-bottom: 24px;
+}
+
+.image-wrapper img {
+    width: 100%;
+    display: block;
+}
+
+.caption-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 24px;
+    font-family: Impact, sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+    line-height: 1.2;
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 0;
+}
+
+.sparkle-icon {
+    width: 32px;
+    height: 32px;
+    color: #a855f7;
+    margin-right: 12px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.loading span {
+    font-size: 18px;
+    color: #374151;
+    font-weight: 600;
+}
+
+.button-group {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.btn {
+    flex: 1;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.btn:hover:not(:disabled) {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: linear-gradient(to right, #3b82f6, #a855f7);
+    color: white;
+}
+
+.btn-secondary {
+    background: linear-gradient(to right, #06b6d4, #3b82f6);
+    color: white;
+}
+
+.btn-accent {
+    background: linear-gradient(to right, #a855f7, #ec4899);
+    color: white;
+}
+
+.btn-text {
+    width: 100%;
+    margin-top: 16px;
+    background: transparent;
+    color: #6b7280;
+    padding: 12px;
+}
+
+.btn-text:hover {
+    background: #f3f4f6;
+    box-shadow: none;
+    transform: none;
+}
+
+@media (max-width: 640px) {
+    .upload-area {
+        padding: 32px 16px;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+    
+    .caption-overlay {
+        font-size: 24px;
+        padding: 16px;
+    }
+}
