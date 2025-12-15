@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Meme Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="brand">ajnev</div>
+    
+    <div class="container">
+        <div class="content">
+            <!-- Upload Section -->
+            <div id="uploadSection" class="upload-area">
+                <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                <h2>Drop Your Image Here</h2>
+                <p>or click to browse files</p>
+                <button id="chooseFileBtn" class="btn btn-primary">Choose Image</button>
+                <input type="file" id="fileInput" accept="image/*" style="display: none;">
+            </div>
+
+            <!-- Meme Section -->
+            <div id="memeSection" class="meme-container" style="display: none;">
+                <div class="image-wrapper">
+                    <img id="previewImage" src="" alt="Uploaded meme">
+                    <div id="captionOverlay" class="caption-overlay" style="display: none;"></div>
+                </div>
+                
+                <div id="loadingIndicator" class="loading" style="display: none;">
+                    <svg class="sparkle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path>
+                    </svg>
+                    <span>Generating meme magic...</span>
+                </div>
+                
+                <div class="button-group">
+                    <button id="regenerateBtn" class="btn btn-secondary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="23 4 23 10 17 10"></polyline>
+                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                        </svg>
+                        Regenerate
+                    </button>
+                    
+                    <button id="downloadBtn" class="btn btn-accent">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download
+                    </button>
+                </div>
+                
+                <button id="newImageBtn" class="btn btn-text">Upload New Image</button>
+            </div>
+        </div>
+    </div>
+    
+    <canvas id="memeCanvas" style="display: none;"></canvas>
+    
+    <script src="script.js"></script>
+</body>
+</html>
