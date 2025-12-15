@@ -1,5 +1,6 @@
 let currentImage = null;
 let currentCaption = '';
+let currentMediaType = 'image/jpeg';
 
 const uploadSection = document.getElementById('uploadSection');
 const memeSection = document.getElementById('memeSection');
@@ -59,6 +60,9 @@ function handleFile(file) {
         return;
     }
     
+    // Store the actual media type
+    currentMediaType = file.type;
+    
     const reader = new FileReader();
     reader.onload = (e) => {
         currentImage = e.target.result;
@@ -78,6 +82,18 @@ async function generateCaption(imageData) {
     
     try {
         const base64Data = imageData.split(',')[1];
+        
+        // Determine the correct media type
+        let mediaType = currentMediaType;
+        // Handle common image formats
+        if (mediaType === 'image/jpg') {
+            mediaType = 'image/jpeg';
+        }
+        // For unsupported formats, default to jpeg
+        if (!['image/jpeg', 'image/png', 'image/gif', 'image/webp'].includes(mediaType)) {
+            mediaType = 'image/jpeg';
+        }
+        
         const response = await fetch('https://api.anthropic.com/v1/messages', {
             method: 'POST',
             headers: {
@@ -93,7 +109,7 @@ async function generateCaption(imageData) {
                             type: 'image',
                             source: {
                                 type: 'base64',
-                                media_type: 'image/jpeg',
+                                media_type: mediaType,
                                 data: base64Data
                             }
                         },
